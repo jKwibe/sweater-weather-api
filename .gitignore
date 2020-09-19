@@ -26,3 +26,5 @@
 .idea/*
 .generators
 .rakeTasks
+# Ignore application configuration
+/config/application.yml
