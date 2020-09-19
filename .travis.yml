@@ -1,0 +1,13 @@
+language: ruby
+cache: bundler
+rbenv:
+  - 2.5.3
+addons:
+  postgresql: 9.6
+script:
+  - bundle exec rails db:{drop,create,migrate} RAILS_ENV=test
+  - bundle exec rspec
+notifications:
+  email:
+      on_success: never
+      on_failure: always
