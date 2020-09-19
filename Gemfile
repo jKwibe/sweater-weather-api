@@ -21,8 +21,9 @@ gem 'puma', '~> 3.11'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'figaro'
 gem 'faraday', '~> 1.0', '>= 1.0.1'
+gem 'fast_jsonapi'
+gem 'figaro'
 
 gem 'travis'
 
