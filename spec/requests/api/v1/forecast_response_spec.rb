@@ -21,7 +21,7 @@ RSpec.describe 'GET /forecast' do
     expect(data[:data][:attributes][:hourly]).to be_a(Array)
     expect(data[:data][:attributes][:daily]).to be_a(Array)
 
-    expect(data[:data][:attributes].keys).to eq(%i[current hourly daily city state country])
+    expect(data[:data][:attributes].keys).to eq(%i[city state country current hourly daily])
     expect(data[:data][:attributes][:current].keys).to eq(%i[time sunrise sunset temp feels_like humidity icon uvi visibility weather_description])
     expect(data[:data][:attributes][:hourly][0].keys).to eq(%i[time temp icon])
     expect(data[:data][:attributes][:daily][0].keys).to eq(%i[time temp_high temp_low precipitation description])
