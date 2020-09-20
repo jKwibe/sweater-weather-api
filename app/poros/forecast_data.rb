@@ -4,14 +4,13 @@ class ForecastData
     @current = response[:current]
     @hourly = response[:hourly]
     @daily = response[:daily]
-    @off_set = response[:timezone_offset]
   end
 
   def current
     {
-      time: FormatDate.full_date_time(@current[:dt] + @off_set),
-      sunrise: FormatDate.full_time(@current[:sunrise] + @off_set),
-      sunset: FormatDate.full_time(@current[:sunset] + @off_set),
+      time: FormatDate.full_date_time(@current[:dt]),
+      sunrise: FormatDate.full_time(@current[:sunrise]),
+      sunset: FormatDate.full_time(@current[:sunset]),
       temp: @current[:temp],
       feels_like: @current[:feels_like],
       humidity: @current[:humidity],
@@ -25,7 +24,7 @@ class ForecastData
   def hourly
     @hourly.map do |weather|
       {
-        time: FormatDate.short_time(weather[:dt] + @off_set),
+        time: FormatDate.short_time(weather[:dt]),
         temp: weather[:temp],
         icon: "http://openweathermap.org/img/wn/#{weather[:weather][0][:icon]}.png"
       }
@@ -35,7 +34,7 @@ class ForecastData
   def daily
     @daily.map do |weather|
       {
-        time: FormatDate.day(weather[:dt] + @off_set),
+        time: FormatDate.day(weather[:dt]),
         temp_high: weather[:temp][:max],
         temp_low: weather[:temp][:min],
         precipitation: weather[:rain],
