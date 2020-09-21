@@ -17,6 +17,10 @@ class ClimbingFacade
     }
   end
 
+  def get_distance(lat_to, lon_to)
+    MapService.get_parsed_route(map_data.latitude, map_data.longitude, lat_to, lon_to)[:route][:distance]
+  end
+
   def routes
     climbing_service = ClimbingService.get_parsed_data(map_data.latitude, map_data.longitude)
     climbing_service[:routes].map do |route|
@@ -25,8 +29,10 @@ class ClimbingFacade
         type: route[:type],
         rating: route[:rating],
         location: route[:location],
-        distance_to_route: MapService.get_parsed_route(map_data.latitude, map_data.longitude, route[:latitude], route[:longitude])[:route][:distance]
+        distance_to_route: get_distance(route[:latitude], route[:longitude])
       }
     end
   end
 end
+# TODO: Create PORO to clean up the Facade
+# TODO: Optimization since the call is a little bit slow.
