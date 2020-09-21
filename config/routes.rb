@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get 'forecast', to: 'forecast#index'
       get 'background', to: 'background#index'
       post 'sign-up', to: 'user#create'
+      post 'session', to: 'session#create'
     end
   end
 end
