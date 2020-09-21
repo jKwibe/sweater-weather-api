@@ -16,12 +16,12 @@ class Api::V1::ClimbingController < ApplicationController
           type: route[:type],
           rating: route[:rating],
           location: route[:location],
-          distance_to_route:
+          distance_to_route: MapService.get_route(lat, lon, route[:latitude], route[:longitude])[:distance]
       }
     end
 
 
-    binding.pry
 
+    binding.pry
   end
 end
