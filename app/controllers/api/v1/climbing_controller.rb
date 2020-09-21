@@ -6,9 +6,10 @@ class Api::V1::ClimbingController < ApplicationController
     lon = map_data.longitude
     weather_service = WeatherService.weather_data(lat, lon)
     forecast = {
-        summary: weather_service[:current][:weather][0][:description],
-        temperature: weather_service[:current][:temp]
+      summary: weather_service[:current][:weather][0][:description],
+      temperature: weather_service[:current][:temp]
     }
+    climbing_service = ClimbingService.get_parsed_data(lat, lon)
     binding.pry
 
   end
