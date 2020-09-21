@@ -24,10 +24,10 @@ RSpec.describe 'GET climbing_routes' do
 
     expect(response.status).to eq(200)
     expect(data[:data].keys).to eq(%i[id type attributes])
-    expect(data[:data][:attributes].keys).to eq(%i[location forecast routes distance_to_route])
+    expect(data[:data][:attributes].keys).to eq(%i[location forecast routes])
     expect(data[:data][:attributes][:forecast].keys).to eq(%i[summary temperature])
     expect(data[:data][:attributes][:routes]).to be_a_kind_of Array
-    expect(data[:data][:attributes][:routes][0].keys).to eq(%i[name type rating location])
+    expect(data[:data][:attributes][:routes][0].keys).to eq(%i[name type rating location distance_to_route])
     expect(data[:data][:attributes][:routes][0][:location]).to be_a_kind_of Array
     expect(data[:data][:attributes][:location]).to be_a_kind_of String
   end
