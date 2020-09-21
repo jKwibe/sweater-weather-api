@@ -45,6 +45,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
+    bcrypt (3.1.15)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -89,6 +90,7 @@ GEM
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     json (2.3.1)
+    jwt (2.2.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.1.5)
@@ -219,6 +221,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
   factory_bot_rails (~> 6.1)
@@ -226,6 +229,7 @@ DEPENDENCIES
   faraday (~> 1.0, >= 1.0.1)
   fast_jsonapi
   figaro
+  jwt
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   pry
