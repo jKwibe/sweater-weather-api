@@ -10,6 +10,17 @@ class Api::V1::ClimbingController < ApplicationController
       temperature: weather_service[:current][:temp]
     }
     climbing_service = ClimbingService.get_parsed_data(lat, lon)
+    routes = climbing_service[:routes].map do |route|
+      {
+          name: route[:name],
+          type: route[:type],
+          rating: route[:rating],
+          location: route[:location],
+          distance_to_route:
+      }
+    end
+
+
     binding.pry
 
   end
