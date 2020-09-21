@@ -10,6 +10,12 @@ RSpec.describe 'GET climbing_routes' do
     stub_request(:get, "https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=#{lat}&lon=#{lon}&key=#{ENV['MOUNTAIN_KEY']}")
       .to_return(status: 200, body: File.read('spec/data/hiking_routes_data.json'))
 
+    stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV['MAP_API']}&location=denver,co")
+      .to_return(status: 200, body: File.read('spec/data/map_data.json'))
+
+    stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/route?key=#{ENV['MAP_API']}&from=Denver%2C+CO&to=Boulder%2C+CO&outFormat=json&ambiguities=ignore&routeType=fastest&doReverseGeocode=false&enhancedNarrative=false&avoidTimedConditions=false")
+      .to_return(status: 200, body: File.read('spec/data/route_distance.json'))
+
     get '/api/v1/climbing_routes?location=denver,co'
 
     data = JSON.parse(response.body, symbolize_names: true)
