@@ -33,7 +33,6 @@ RSpec.describe 'POST /api/v1/road_trip' do
     expect(response.content_type).to eq('application/json')
     expect(response).to have_http_status(:ok)
 
-    expect(res[:data].keys).to eq(%i[id type attributes])
     expect(res[:data][:attributes].keys).to include(:origin)
     expect(res[:data][:attributes].keys).to include(:destination)
     expect(res[:data][:attributes].keys).to include(:destination_temperature)
