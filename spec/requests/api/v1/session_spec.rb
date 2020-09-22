@@ -20,7 +20,13 @@ RSpec.describe 'POST/ Login' do
     expect(response.content_type).to eq('application/json')
     expect(response).to have_http_status(:ok)
     expect(res[:data].keys).to eq(%i[id type attributes])
-    expect(res[:data][:attributes].keys).to eq(%i[email access_token])
+    expect(res[:data].keys).to include(:id)
+    expect(res[:data].keys).to include(:type)
+    expect(res[:data].keys).to include(:attributes)
+
+    expect(res[:data][:attributes].keys).to include(:email)
+    expect(res[:data][:attributes].keys).to include(:access_token)
+
     expect(res[:data][:attributes][:email]).to be_a_kind_of String
     expect(res[:data][:attributes][:email]).to match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/)
     expect(res[:data][:attributes][:email]).to be_a_kind_of String
