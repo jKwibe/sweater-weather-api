@@ -24,6 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faraday', '~> 1.0', '>= 1.0.1'
 gem 'fast_jsonapi'
 gem 'figaro'
+gem 'redis-rails'
 
 gem 'jwt'
 gem 'travis'
