@@ -22,9 +22,6 @@ Rails.application.configure do
     db: 0,
     namespace: 'sweater-weather'
   }
-  config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{2.days.to_i}"
-  }
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
