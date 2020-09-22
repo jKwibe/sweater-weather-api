@@ -21,9 +21,10 @@ RSpec.describe 'GET climbing_routes' do
 
     # map through the to create get the distance
     data[:routes].each do |route|
-      stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/route?key=#{ENV['MAP_API']}&from={latLng:{lat:#{lat},lng:#{lon}}}&to={latLng:{lat:#{route[:latitude]},lng:#{route[:longitude]}}}")
+      stub_request(:get, "http://www.mapquestapi.com/directions/v2/route?from={latLng:{lat:#{lat},lng:#{lon}}}&key=#{ENV['MAP_API']}&to={latLng:{lat:#{route[:latitude]},lng:#{route[:longitude]}}}")
         .to_return(status: 200, body: File.read('spec/data/route_distance.json'))
     end
+
 
     get '/api/v1/climbing_routes?location=denver,co'
 
