@@ -20,4 +20,14 @@ RSpec.describe 'GET /background' do
     expect(data[:data][:attributes][:image_url]).to be_a(String)
     expect(data[:data][:attributes][:image_url]).to match(%r{https?://[\S]+})
   end
+
+  it 'should get an error if location is not passed' do
+
+    get "#{api_v1_background_path}?location="
+
+    data = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response.status).to eq(422)
+    expect(data[:data][:attributes].keys).to include(:message)
+  end
 end

@@ -23,22 +23,11 @@ RSpec.describe ForecastData do
     expect(@forecast.current.keys).to include(:weather_description)
 
     expect(@forecast.current[:time]).to eq(FormatDate.full_date_time(@data[:current][:dt]))
-    expect(@forecast.current[:time]).to be_a String
-
     expect(@forecast.current[:sunrise]).to eq(FormatDate.full_time(@data[:current][:sunrise]))
-    expect(@forecast.current[:sunrise]).to be_a String
-
     expect(@forecast.current[:sunset]).to eq(FormatDate.full_time(@data[:current][:sunset]))
-    expect(@forecast.current[:sunset]).to be_a String
-
     expect(@forecast.current[:temp]).to eq(@data[:current][:temp])
-
     expect(@forecast.current[:feels_like]).to eq(@data[:current][:feels_like])
-    expect(@forecast.current[:feels_like]).to be_a String
-
     expect(@forecast.current[:humidity]).to eq(@data[:current][:humidity])
-    expect(@forecast.current[:humidity]).to be_a String
-
     expect(@forecast.current[:icon]).to include(@data[:current][:weather][0][:icon])
     expect(@forecast.current[:uvi]).to eq(@data[:current][:uvi])
     expect(@forecast.current[:visibility]).to eq(@data[:current][:visibility])
