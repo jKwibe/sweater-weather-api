@@ -1,6 +1,8 @@
 class WeatherService
   def self.weather_data(lat, lng, units = 'imperial')
-    JSON.parse(get_weather_data(lat, lng, units).body, symbolize_names: true)
+    Rails.cache.fetch("#{lat}#{lng}", expires_in: 30.minutes) do
+      JSON.parse(get_weather_data(lat, lng, units).body, symbolize_names: true)
+    end
   end
 
   def self.get_weather_data(lat, lng, units)
