@@ -18,7 +18,7 @@ class ClimbingFacade
   end
 
   def get_distance(lat_to, lon_to)
-    MapService.get_parsed_route(map_data.latitude, map_data.longitude, lat_to, lon_to)[:route][:distance]
+    RouteService.get_parsed_route(map_data.latitude, map_data.longitude, lat_to, lon_to)[:route][:distance]
   end
 
   def routes
