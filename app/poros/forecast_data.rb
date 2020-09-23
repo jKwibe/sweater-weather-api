@@ -1,9 +1,12 @@
 class ForecastData
-  attr_reader :id
-  def initialize(response)
+  attr_reader :id, :city, :state, :country
+  def initialize(response, location)
     @current = response[:current]
     @hourly = response[:hourly]
     @daily = response[:daily]
+    @city = location.city
+    @state = location.state
+    @country = location.country
   end
 
   def current

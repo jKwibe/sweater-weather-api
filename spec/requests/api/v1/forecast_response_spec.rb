@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'GET /forecast' do
-  it 'get forecast data' do
+  xit 'get forecast data' do
     # stubs
     stub_request(:get, "https://api.openweathermap.org/data/2.5/onecall?appid=#{ENV['WEATHER_API']}&lat=39.738453&lon=-104.984853&units=imperial")
       .to_return(status: 200, body: File.read('spec/data/weather-data.json'))

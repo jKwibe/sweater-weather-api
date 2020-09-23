@@ -42,7 +42,7 @@ RSpec.describe 'POST/ Login' do
     res = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.content_type).to eq('application/json')
-    expect(response).to have_http_status(:not_acceptable)
+    expect(response).to have_http_status(:bad_request)
     expect(res[:data][:attributes].keys).to eq(%i[message])
     expect(res[:data][:attributes][:message]).to be_a_kind_of String
     expect(res[:data][:attributes][:message]).to eq('Provide Correct Credentials')

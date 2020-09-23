@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe ForecastData do
   before(:each) do
     @data = JSON.parse(File.read('spec/data/weather-data.json'), symbolize_names: true)
-    @forecast = ForecastData.new(@data)
+    map_info = JSON.parse(File.read('spec/data/map_data.json'), symbolize_names: true)
+    @loc = MapData.new(map_info)
+    @forecast = ForecastData.new(@data, @loc)
   end
   it 'should exist' do
     expect(@forecast).to be_instance_of(ForecastData)
