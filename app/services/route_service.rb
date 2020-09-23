@@ -1,6 +1,8 @@
 class RouteService
   def self.parsed_route(to, from)
-    JSON.parse(get_route(to, from).body, symbolize_names: true)
+    Rails.cache.fetch("#{to}+#{from}", expires_in: 24.hours) do
+      JSON.parse(get_route(to, from).body, symbolize_names: true)
+    end
   end
 
   def self.get_route(to, from)

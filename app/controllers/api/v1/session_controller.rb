@@ -6,7 +6,7 @@ class Api::V1::SessionController < ApplicationController
       user_token = { params: { access_token: token } }
       render json: UserSerializer.new(user, user_token), status: :ok
     else
-      render json: ErrorSerializer.new(ErrorHandler.new('Provide Correct Credentials')), status: :not_acceptable
+      render json: ErrorSerializer.new(ErrorHandler.new('Provide Correct Credentials')), status: :bad_request
     end
   end
 end

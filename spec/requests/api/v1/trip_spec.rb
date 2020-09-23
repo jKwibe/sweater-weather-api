@@ -78,7 +78,7 @@ RSpec.describe 'POST /api/v1/road_trip' do
     res = JSON.parse(response.body, symbolize_names: true)
 
     expect(response.content_type).to eq('application/json')
-    expect(response).to have_http_status(:unprocessable_entity)
+    expect(response).to have_http_status(:bad_request)
 
     expect(res[:data].keys).to include(:id)
     expect(res[:data].keys).to include(:type)
@@ -86,5 +86,4 @@ RSpec.describe 'POST /api/v1/road_trip' do
 
     expect(res[:data][:attributes][:message]).to be_a(String)
   end
-
 end

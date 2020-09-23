@@ -27,7 +27,7 @@ RSpec.describe 'GET /background' do
 
     data = JSON.parse(response.body, symbolize_names: true)
 
-    expect(response.status).to eq(422)
+    expect(response.status).to eq(400)
     expect(data[:data][:attributes].keys).to include(:message)
   end
 end

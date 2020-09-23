@@ -1,6 +1,8 @@
 class MapService
   def self.map_data(location)
-    JSON.parse(get_map_data(location).body, symbolize_names: true)
+    Rails.cache.fetch("map-#{location}", expires_in: 24.hours) do
+      JSON.parse(get_map_data(location).body, symbolize_names: true)
+    end
   end
 
   def self.get_map_data(location)
