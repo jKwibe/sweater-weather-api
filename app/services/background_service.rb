@@ -1,6 +1,6 @@
 class BackgroundService
   def self.image_data(location)
-    Rails.cache.fetch(location, expires_in: 24.hours) do
+    Rails.cache.fetch("image-#{location}", expires_in: 24.hours) do
       JSON.parse(get_background(location).body, symbolize_names: true)
     end
   end
